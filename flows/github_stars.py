@@ -86,5 +86,5 @@ with Flow("github_stars") as flow:
     make_plot(df)
 
 
-flow.storage = GitHub("prefecthq/prefect", "flows/github_stars.py")
+flow.storage = GitHub("jcrist/prefect-github-example", "flows/github_stars.py")
 flow.run_config = DockerRun(image="jcrist/prefect-github-example")
