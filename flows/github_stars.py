@@ -21,7 +21,8 @@ def build_df(star_counts):
 @task
 def make_plot(df):
     """Make a plot of the star counts and post it as an artifact"""
-    df.plot.line(title="GitHub Stars")
+    ax = df.plot.line(title="GitHub Stars")
+    ax.set(xlabel="Date", ylabel="Stars")
     fil = BytesIO()
     plt.savefig(fil, format="svg")
     fig_body = fil.getvalue().decode("utf-8")
