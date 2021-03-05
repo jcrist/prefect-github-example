@@ -1,0 +1,7 @@
+*.pyc
+*.egg-info
+build/
+dist/
+.pytest_cache/
+.eggs/
+.DS_Store
