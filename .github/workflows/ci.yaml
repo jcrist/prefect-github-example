@@ -31,12 +31,12 @@ jobs:
       - name: Run tests
         run: py.test tests
 
-      - name: Build and Upload Image
-        if: github.ref == 'refs/heads/master'
-        run: |
-          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-          docker build -t jcrist/prefect-github-example:latest .
-          docker push jcrist/prefect-github-example:latest
+      #- name: Build and Upload Image
+        #if: github.ref == 'refs/heads/master'
+        #run: |
+          #docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+          #docker build -t jcrist/prefect-github-example:latest .
+          #docker push jcrist/prefect-github-example:latest
 
       - name: Register Flows
         if: github.ref == 'refs/heads/master'
