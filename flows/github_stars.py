@@ -51,6 +51,7 @@ def get_stars(repo, token):
         info = resp["data"]["repository"]["stargazers"]["pageInfo"]
         if not info["hasNextPage"]:
             break
+        break  # TODO remove
         cursor = info["endCursor"]
 
     out = pd.Series(1, index=pd.to_datetime(dates))
