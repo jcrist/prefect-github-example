@@ -3,9 +3,12 @@ from io import BytesIO
 import requests
 import pandas as pd
 import matplotlib.pyplot as plt
+
 from prefect import Flow, task, Parameter, unmapped
 from prefect.tasks.secrets import PrefectSecret
 from prefect.artifacts import create_markdown
+from prefect.storage import GitHub
+from prefect.run_configs import DockerRun
 
 
 query = """
@@ -82,4 +85,5 @@ with Flow("github_stars") as flow:
     make_plot(df)
 
 
-flow.run()
+flow.storage = GitHub("prefecthq/prefect", "flows/github_stars.py")
+flow.run_config = DockerRun(image="jcrist/prefect-github-example")
